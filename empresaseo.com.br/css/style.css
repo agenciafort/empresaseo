@@ -1,0 +1,777 @@
+/* ==========================================================================
+   1. RESET E FONTES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #0066cc;   /* Azul da Marca */
+    --primary-hover: #004c99;
+    --text-color: #1a1a1a;      /* Cinza Chumbo */
+    --bg-light: #ffffff;        /* Fundo Branco Puro */
+    --border-color: #eee;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 17px;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3 { font-weight: 700; color: #000; letter-spacing: -0.5px; }
+
+/* ==========================================================================
+   2. CABEÇALHO (HEADER) - LOGO GRANDE (120px)
+   ========================================================================== */
+body > header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    height: 140px; /* Altura para caber a logo grande */
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* Remove sticky dos headers internos */
+.article-header { 
+    position: static !important; 
+    top: auto !important; 
+    box-shadow: none !important; 
+    border-bottom: 1px solid #eee; 
+}
+
+nav {
+    max-width: 1400px;
+    width: 100%;
+    height: 120px;
+    padding: 15px 20px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+/* LOGO 120PX */
+.logo img {
+    max-height: 120px; 
+    width: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+.logo img:hover { transform: scale(1.02); }
+
+/* MENU DESKTOP */
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links li { position: relative; }
+.nav-links a { font-weight: 600; color: #333; font-size: 18px; padding: 10px 0; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary-color); }
+
+/* DROPDOWN */
+.dropdown-menu {
+    display: none; position: absolute; top: 100%; left: -20px;
+    background: #fff; min-width: 220px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 8px; padding: 10px 0; border-top: 3px solid var(--primary-color);
+}
+.nav-links li:hover .dropdown-menu { display: block; animation: fadeIn 0.3s ease; }
+.dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.95rem; border-bottom: 1px solid #f9f9f9; }
+.dropdown-menu a:hover { background: #f4f7f6; color: var(--primary-color); padding-left: 25px; }
+
+/* BOTÃO AGENDAR */
+.btn-agendar {
+    background-color: var(--primary-color); color: #fff !important; padding: 12px 25px !important;
+    border-radius: 50px; font-weight: bold; transition: 0.3s;
+}
+.btn-agendar:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+
+.hamburger { display: none; } /* Esconde no PC */
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ==========================================================================
+   3. MOBILE (CELULAR) - COMPACTO E ALINHADO
+   ========================================================================== */
+@media (max-width: 768px) {
+    body > header { height: 80px; padding: 45px 20px; }
+    .logo img { max-height: 95px; }
+    
+    .hamburger { display: block !important; cursor: pointer; z-index: 1001; background: transparent; border: none; }
+    .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: #333; transition: 0.3s; }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Menu Lateral */
+    .nav-links {
+        position: fixed; 
+        top: 80px; 
+        right: -100%;
+        width: 100%;
+        
+        /* CORREÇÃO AQUI: Deixamos a altura automática */
+        height: auto; 
+        
+        max-height: calc(100vh - 80px); /* Altura MÁXIMA para ele não vazar se tiver links demais */
+        
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 10px;
+        transition: 0.4s ease-in-out;
+        overflow-y: auto;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+    .nav-links.active { right: 0; }
+    
+    /* Espaçamento Compacto */
+    .nav-links li { width: 100%; text-align: center; margin: 0; border-bottom: 1px solid #f5f5f5; }
+    .nav-links a { font-size: 1rem !important; padding: 10px 0 !important; display: block; width: 100%; }
+    
+    /* Submenu Mobile */
+    .dropdown-menu { position: static; display: none; width: 100%; background: #f9f9f9; border: none; box-shadow: none; }
+    .dropdown-menu.show { display: block; }
+    .dropdown-menu a { font-size: 0.9rem !important; padding: 10px !important; color: #555; }
+    
+    .btn-agendar { width: 80%; margin: 20px 0 40px 0 !important; padding: 10px !important; font-size: 1rem !important; }
+}
+
+/* ==========================================================================
+   4. PAGE HERO (CORRIGIDO: TEXTO DENTRO DA IMAGEM)
+   ========================================================================== */
+.page-hero {
+    /* 1. Configuração de Tamanho e Posição */
+    width: 100vw;
+    max-width: 100%;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /* 2. O Segredo para o texto ficar dentro: FLEXBOX */
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;     /* Centraliza horizontalmente */
+    
+    /* 3. Altura: Mínima de 450px, mas cresce se o texto for grande */
+    min-height: 450px; 
+    height: auto !important;
+    
+    /* 4. Imagem de Fundo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--primary-color); /* Cor de segurança */
+    
+    /* 5. Espaçamento Interno (Padding) e Externo (Margem) */
+    padding: 60px 20px;
+    margin-bottom: 100px !important; /* A margem que separa do texto de baixo */
+    
+    text-align: center;
+    color: #ffffff;
+    z-index: 1;
+}
+
+/* Camada escura para o texto aparecer na foto */
+.page-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)); /* Degradê escuro */
+    z-index: 1;
+}
+
+/* O Container do Texto (Fica em cima da camada escura) */
+.hero-content {
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Garante que fique na frente */
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ffffff !important;
+    line-height: 1.2;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+}
+
+.page-hero p {
+    font-size: 1.4rem;
+    color: #f0f0f0;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+.article-meta {
+    color: #80d4ff; /* Azul claro destaque */
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* AJUSTE PARA CELULAR */
+@media (max-width: 768px) {
+    .page-hero {
+        min-height: 350px; /* Um pouco menor no celular */
+        padding-top: 100px !important; /* Espaço para o menu não cobrir */
+        padding-bottom: 60px !important;
+        margin-bottom: 40px !important;
+    }
+    .page-hero h1 { font-size: 1.8rem !important; }
+    .page-hero p { font-size: 1.1rem !important; }
+}
+
+/* ==========================================================================
+   5. LAYOUT COM SIDEBAR (2 COLUNAS)
+   ========================================================================== */
+.page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 60px;
+    max-width: 1400px;
+    
+    /* ADICIONE MARGEM NO TOPO AQUI TAMBÉM: */
+    margin-top: 60px !important; /* Empurra o conteúdo para baixo */
+    
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    align-items: start;
+}
+
+.content-area { width: 100%; min-width: 0; }
+.content-body, .article-container { width: 100%; padding: 0; background: transparent; box-shadow: none; }
+
+/* TIPOGRAFIA ALINHADA A ESQUERDA */
+.article-body p, .content-body p {
+    font-size: 1.2rem; line-height: 1.9; color: #333; margin-bottom: 25px;
+    text-align: left; max-width: 100%;
+}
+.article-body h2, .content-body h2 {
+    font-size: 2rem; color: #000; margin-top: 50px; margin-bottom: 20px;
+    text-align: left; max-width: 100%;
+}
+.article-body ul, .content-body ul { margin-left: 20px; margin-bottom: 30px; text-align: left; }
+.article-body li, .content-body li { margin-bottom: 12px; font-size: 1.1rem; }
+
+/* ==========================================================================
+   6. SIDEBAR E WIDGETS
+   ========================================================================== */
+.main-sidebar { height: 100%; }
+.sidebar-widget {
+    background: #fff; padding: 25px; border: 1px solid #eee; border-radius: 8px;
+    margin-bottom: 40px;
+}
+.sidebar-widget h3 {
+    font-size: 1.1rem; border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px; margin-bottom: 20px; display: inline-block;
+}
+.search-form { display: flex; gap: 5px; }
+.search-form input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 100%; }
+.search-form button { background: var(--primary-color); color: #fff; border: none; padding: 0 15px; border-radius: 4px; cursor: pointer; }
+.sidebar-links li { border-bottom: 1px solid #f5f5f5; padding: 8px 0; }
+.sidebar-links a { display: flex; justify-content: space-between; color: #555; font-size: 0.95rem; }
+.sidebar-links a:hover { color: var(--primary-color); }
+
+/* Banner Sticky */
+.sticky-widget { position: sticky; top: 160px; z-index: 10; }
+.promo-banner {
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: #fff; padding: 30px; border-radius: 8px; text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.promo-banner h3 { color: #fff; margin-bottom: 10px; }
+.promo-banner p { color: #e0e0e0; font-size: 0.95rem; margin-bottom: 20px; }
+.btn-banner { background: #fff; color: var(--primary-color); padding: 10px 25px; border-radius: 50px; font-weight: bold; display: inline-block; }
+
+@media (max-width: 900px) {
+    .page-wrapper { grid-template-columns: 1fr; }
+    .sticky-widget { position: static; }
+}
+
+/* ==========================================================================
+   7. BLOG GRID E HERO HOME
+   ========================================================================== */
+/* Hero Home (Com Imagem) */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/blog/ola-mundo.webp');
+    background-size: cover; background-position: center;
+    height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; color: #fff; padding: 20px; margin-bottom: 40px;
+}
+.hero h1 { font-size: 3.5rem; max-width: 900px; margin-bottom: 20px; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.hero p { font-size: 1.3rem; max-width: 700px; margin-bottom: 40px; color: #e0e0e0; }
+.hero-btns { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.btn-outline { border: 2px solid #fff; color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+.btn-outline:hover { background: #fff; color: #333; }
+
+/* Blog Grid (Cards) */
+.blog-header { text-align: center; padding: 60px 20px; background: #f9f9f9; margin-bottom: 60px; }
+.blog-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 40px; max-width: 1400px; margin: 0 auto; padding: 0 20px 80px 20px; 
+}
+.blog-card { background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; transition: transform 0.3s; }
+.blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.blog-img { width: 100%; height: 240px; object-fit: cover; }
+.blog-content { padding: 30px; }
+.blog-meta { font-size: 0.8rem; color: #888; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
+.blog-card h2 { font-size: 1.5rem; margin-bottom: 15px; line-height: 1.3; }
+.read-more { color: var(--primary-color); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
+
+.home-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
+.service-box { background: #fff; padding: 40px; border-radius: 8px; border-bottom: 4px solid var(--primary-color); box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; text-align: left; }
+.service-box:hover { transform: translateY(-5px); }
+.service-box h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.5rem; }
+.service-box p { color: #666; margin-bottom: 20px; }
+.service-box a { color: #333; font-weight: bold; font-size: 0.9rem; }
+.trust-section { background: #f4f7f6; text-align: center; padding: 80px 20px; margin-top: 80px; }
+
+/* ==========================================================================
+   8. RODAPÉ CLEAN
+   ========================================================================== */
+.site-footer { background-color: #f9f9f9; color: #333; padding-top: 70px; margin-top: 100px; border-top: 1px solid #eee; font-size: 16px; }
+.footer-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 60px; }
+.brand-col 
+.footer-logo { max-height: 100px; margin-bottom: 20px; }
+.footer-col h3 { font-size: 1.1rem; margin-bottom: 25px; font-weight: 700; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: #555; transition: 0.3s; }
+.footer-links a:hover { color: var(--primary-color); padding-left: 5px; }
+.social-links { display: flex; gap: 15px; margin-bottom: 20px; justify-content: center; }
+.social-icon { width: 40px; height: 40px; background: #fff; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #555; }
+.btn-footer { display: inline-block; padding: 10px 20px; background: var(--primary-color); color: #fff; border-radius: 50px; font-size: 0.9rem; }
+.footer-bottom { background: #f1f1f1; text-align: center; padding: 20px; font-size: 0.9rem; color: #777; }
+
+@media (max-width: 600px) { .footer-container { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* 1 coluna no celular */
+        text-align: center; /* CENTRALIZA o texto */
+    }
+    
+    .footer-col { 
+        margin-bottom: 30px; 
+        text-align: center; /* Garante que o bloco fique centralizado */
+    }
+    
+    /* Centraliza os links e a lista de contato */
+    .footer-links a, .contact-list li {
+        display: block; 
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    /* Remove o efeito de deslizar (translate) quebra o alinhamento */
+    .footer-links a:hover {
+        transform: translateX(0); 
+    }
+    
+    /* Centraliza o bloco de ícones do Facebook */
+    .social-links {
+        justify-content: center;
+        margin: 0 auto 20px auto;
+    }
+}
+/* Elementos Visuais (Tabelas e Boxes) */
+table { width: 100%; border-collapse: collapse; margin: 40px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.08); font-size: 1rem; border-radius: 8px; overflow: hidden; }
+th { background-color: #2c3e50; color: #fff; padding: 15px; text-align: left; }
+td { border-bottom: 1px solid #eee; padding: 15px; color: #555; vertical-align: top; }
+tr:nth-child(even) { background-color: #f8f9fa; }
+.insight-box, .info-box { background: #e3f2fd; border-left: 5px solid #2196f3; padding: 25px; margin: 30px 0; border-radius: 4px; }
+.alert-box, .warning-box { background: #fff3e0; border-left: 5px solid #ff9800; padding: 25px; margin: 30px 0; border-radius: 4px; color: #5d4037; }
+.checklist-box { background: #fff; border: 2px solid #e0e0e0; padding: 30px; margin: 40px 0; border-radius: 8px; }
+.checklist-item { display: flex; margin-bottom: 15px; font-size: 1.1rem; }
+.checklist-icon { color: #2e7d32; margin-right: 10px; font-weight: bold; }
+.step-title { font-size: 1.6rem; color: #2e7d32; margin-top: 50px; margin-bottom: 20px; font-weight: 700; display: flex; align-items: center; }
+.step-number { background: #2e7d32; color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-right: 15px; }
+.back-btn { display: inline-block; margin-top: 50px; padding: 15px 30px; background-color: #f4f4f4; color: #333; border-radius: 5px; font-weight: bold; border: 1px solid #ddd; transition: 0.3s; }
+.back-btn:hover { background-color: #333; color: #fff; }
+
+
+/* ======================================================
+   CORREÇÃO FINAL DE MARGEM DO PAGE HERO (DESKTOP E MOBILE)
+   ====================================================== */
+
+.page-hero {
+    /* Força o espaço embaixo do banner */
+    margin-bottom: 100px !important; 
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center; /* Centraliza Verticalmente */
+    align-items: center;     /* Centraliza Horizontalmente */
+    text-align: center;      /* Garante alinhamento de fallback */
+    /* Garante que o elemento seja tratado como bloco para empurrar o conteúdo */
+    display: block !important; 
+    position: relative !important;
+}
+
+/* Se ainda não funcionar, empurramos o conteúdo de baixo para longe */
+.page-wrapper, 
+main + .page-wrapper { 
+    margin-top: 50px !important; 
+}
+
+/* Ajuste específico para não ficar um buraco enorme no Celular */
+@media (max-width: 768px) {
+    .page-hero {
+        margin-bottom: 40px !important;
+    }
+    .page-wrapper {
+        margin-top: 20px !important;
+    }
+}
+
+
+/* =========================================
+   BOTÃO DO BANNER (PAGE HERO CTA)
+   ========================================= */
+.btn-hero {
+    display: inline-block;
+    margin-top: 30px;       /* Espaço acima do botão */
+    padding: 15px 45px;     /* Tamanho generoso (Gordo) */
+    
+    background-color: #ffffff; /* Fundo Branco para destacar no azul/foto */
+    color: var(--primary-color); /* Texto Azul da marca */
+    
+    font-weight: 700;       /* Negrito */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;    /* Redondo moderno */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra para dar profundidade */
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px); /* Sobe um pouquinho ao passar o mouse */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background-color: #f0f0f0; /* Cinza bem clarinho no hover */
+}
+
+/* Ajuste para Celular (Se precisar) */
+@media (max-width: 768px) {
+    .btn-hero {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+        width: auto; /* Deixa o tamanho natural ou 100% se preferir */
+    }
+}
+
+/* ==========================================================================
+   CORREÇÃO FINAL DE ALINHAMENTO (CENTRALIZAÇÃO)
+   ========================================================================== */
+
+/* 1. Alinha o Texto e o Botão Horizontalmente (dentro da caixa) */
+.page-hero, 
+.hero-content {
+    /* Garante que o alinhamento de texto seja centralizado em todos os níveis */
+    text-align: center !important; 
+}
+
+/* 2. Garante que o Bloco Principal (Logo e Hamburger) esteja centralizado verticalmente */
+.page-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; 
+    justify-content: center !important; 
+}
+
+/* 3. Garante que os títulos e parágrafos sigam a regra */
+.page-hero h1, 
+.page-hero p, 
+.page-hero .btn-hero {
+    text-align: center !important;
+    margin-left: auto !important; /* Ajuda a centralizar o bloco do botão */
+    margin-right: auto !important;
+}
+
+/* ==========================================================================
+   FORMULÁRIOS (COTAÇÃO E CONTATO) - CORREÇÃO DE ESTILO
+   ========================================================================== */
+.cotacao-form {
+    /* Estilo do Card Branco */
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    max-width: 900px; /* Limita a largura do formulário */
+    margin: 0 auto;
+}
+
+.form-group { 
+    margin-bottom: 20px; 
+}
+
+label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: 600; 
+    color: #444; 
+}
+
+/* Estilo dos campos INPUT, SELECT e TEXTAREA */
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background-color: #fafafa;
+    font-family: inherit;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--white);
+}
+
+/* Estilo do Botão de Envio (CTA) */
+.btn-cta {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    color: #ffffff !important;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 10px;
+    transition: 0.3s;
+    text-align: center;
+}
+.btn-cta:hover { 
+    background-color: var(--primary-hover); 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 10px rgba(rgba(0, 102, 204, 0.2), 0.2); 
+}
+
+/* ==========================================================================
+   ! CÓDIGO FINAL DE FORÇA MÁXIMA (COMPACTAÇÃO EXTREMA)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. ZERA TODAS AS MARGENS EXTERNAS DO LI */
+    .nav-links li {
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.0 !important; /* Remove qualquer espaço de linha herdado */
+    }
+
+    /* 2. LINKS PRINCIPAIS (Compactação Máxima) */
+    .nav-links a {
+        /* PADDING MÍNIMO ABSOLUTO SEGURO */
+        padding: 3px 0 !important; 
+        
+        font-size: 0.9rem !important; /* Fonte menor */
+        line-height: 1.1 !important; /* Altura da linha colada */
+    }
+
+    /* 3. LINKS DO SUBMENU (Ainda mais apertados) */
+    .dropdown-menu a {
+        padding: 2px 10px !important; /* Mínimo de 2px em cima/baixo */
+        font-size: 0.8rem !important; /* Fonte bem pequena */
+        line-height: 1.0 !important;
+    }
+    
+    /* Zera a margem do botão para ele não empurrar a lista */
+    .btn-agendar {
+        margin-top: 15px !important;
+        margin-bottom: 15px !important;
+        padding: 10px 20px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        /* ... outras linhas ... */
+        
+        /* CORREÇÃO DO TOPO: Zera o espaço interno */
+        padding-top: 0px !important; 
+        
+        /* ... outras linhas ... */
+    }
+    
+    /* Zera a margem de cima do primeiro item caso o container não tenha resolvido */
+    .nav-links li:first-child {
+        margin-top: 0 !important;
+    }
+}
+
+/* ==========================================================================
+   ! CORREÇÃO CIRÚRGICA FINAL DO MENU MOBILE (OBRIGA A SER COMPACTO)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. ZERA O ESPAÇO NO TOPO DO MENU ABERTO */
+    .nav-links {
+        padding-top: 0 !important; /* Zera o espaço que empurra o primeiro link */
+        margin-top: 0 !important;
+        /* E garante que a lista continue deslizando corretamente */
+        position: fixed !important;
+    }
+
+    /* 2. ZERA MARGENS E PADDINGS EXTERNOS DO ITEM (LI) */
+    .nav-links li {
+        margin: 0 !important; 
+        padding: 0 !important;
+        line-height: 1.0 !important; 
+    }
+
+    /* 3. APLICA O PADDING MÍNIMO (COMPRESSÃO VERTICAL) */
+    .nav-links a {
+        font-size: 0.95rem !important; /* Fonte compacta */
+        padding: 5px 0 !important; /* ESPAÇAMENTO MÍNIMO: 5px em cima e embaixo */
+        line-height: 1.2 !important; 
+    }
+
+    /* 4. SUBMENU APERTADO */
+    .dropdown-menu a {
+        padding: 4px 10px !important; /* Aperta o submenu */
+        font-size: 0.85rem !important;
+    }
+}
+
+
+/* ==========================================================================
+   ! CORREÇÃO CIRÚRGICA FINAL DO MENU MOBILE (OBRIGA A SER COMPACTO)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. ZERA O ESPAÇO NO TOPO DO MENU ABERTO */
+    .nav-links {
+        padding-top: 0 !important; /* Zera o espaço que empurra o primeiro link */
+        margin-top: 0 !important;
+        /* E garante que a lista continue deslizando corretamente */
+        position: fixed !important;
+    }
+
+    /* 2. ZERA MARGENS E PADDINGS EXTERNOS DO ITEM (LI) */
+    .nav-links li {
+        margin: 0 !important; 
+        padding: 0 !important;
+        line-height: 1.0 !important; 
+    }
+
+    /* 3. APLICA O PADDING MÍNIMO (COMPRESSÃO VERTICAL) */
+    .nav-links a {
+        font-size: 0.95rem !important; /* Fonte compacta */
+        padding: 5px 0 !important; /* ESPAÇAMENTO MÍNIMO: 5px em cima e embaixo */
+        line-height: 1.2 !important; 
+    }
+
+    /* 4. SUBMENU APERTADO */
+    .dropdown-menu a {
+        padding: 4px 10px !important; /* Aperta o submenu */
+        font-size: 0.85rem !important;
+    }
+}
+/* =========================================
+   BREADCRUMBS (TRANSPARENTE E BRANCO)
+   ========================================= */
+.breadcrumb-nav {
+    background-color: transparent !important; /* Fundo Invisível */
+    padding: 10px 0 20px 0; /* Um pouco de espaço antes do título */
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 10; /* Garante que fique acima de tudo */
+    width: 100%;
+}
+
+.breadcrumb-nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0; /* Remove padding extra se necessário */
+}
+
+.breadcrumb-nav ol {
+    display: flex;
+    justify-content: center; /* Centraliza os links no meio do banner */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Separador (>) em Branco Suave */
+.breadcrumb-nav li + li::before {
+    content: "›";
+    margin: 0 10px;
+    color: rgba(255, 255, 255, 0.6); 
+}
+
+/* Links (Home, Serviços...) */
+.breadcrumb-nav a {
+    color: #ffffff !important; /* Branco Puro */
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+.breadcrumb-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Página Atual (Sem link) */
+.breadcrumb-nav li[aria-current="page"] {
+    color: rgba(255, 255, 255, 0.7); /* Branco mais transparente */
+    font-weight: 400;
+}
+
+/* =========================================
+   FORÇA BRUTA NA LOGO
+   ========================================= */
+
+/* 1. Destrava o container pai */
+.logo {
+    min-width: 350px !important; /* Garante espaço horizontal */
+    width: auto !important;
+    flex-shrink: 0 !important; /* Impede o menu de esmagar a logo */
+}
+
+/* 2. Força a imagem a crescer pela LARGURA */
+.logo img {
+    width: px !important; /* Define a LARGURA que você quer (não altura) */
+    height: auto !important; /* A altura se ajusta sozinha */
+    max-height: none !important; /* Remove qualquer trava de altura */
+    display: block;
+}
+
+/* Ajuste para Celular (para não ficar gigante demais) */
+@media (max-width: 768px) {
+    .logo img {
+        width: 250px !important; /* Largura menor no celular */
+    }
+}

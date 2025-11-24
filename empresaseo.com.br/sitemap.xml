@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!-- Home -->
+    <url>
+        <loc>https://www.empresaseo.com.br/</loc>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Páginas Principais -->
+    <url>
+        <loc>https://www.empresaseo.com.br/sobre/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/contato/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/cotacao/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Serviços -->
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/auditoria-seo/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/otimizacao-on-page/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/otimizacao-tecnica/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/conteudo/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/link-building/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/seo-local/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/cro-ux/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/consultoria-monitoramento/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/servicos/servicos-complementares/</loc>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Blog -->
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/como-o-seo-marketing-pode-ajudar-a-sua-empresa/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/como-divulgar-minha-empresa-no-google-de-graca-seo/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/a-melhor-empresa-de-seo/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/por-que-contratar-uma-empresa-de-seo/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/porque-eleger-servicos-de-SEO-para-minha-empresa/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/ola-mundo-empresa-seo/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/o-que-e-seo-da-empresa/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/objetivo-seo-relevancia/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/como-implantar-seo-na-empresa/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/blog/modelo-de-artigo/</loc>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Páginas Legais -->
+    <url>
+        <loc>https://www.empresaseo.com.br/legal/termos-uso.html</loc>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/legal/lgpd.html</loc>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/legal/politica-cookies.html</loc>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.empresaseo.com.br/legal/politica-privacidade.html</loc>
+        <priority>0.5</priority>
+    </url>
+    
+</urlset>

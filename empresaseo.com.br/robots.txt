@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /components/
+Disallow: /css/
+
+Sitemap: https://www.empresaseo.com.br/sitemap.xml
+
+
